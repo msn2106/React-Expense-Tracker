@@ -1,11 +1,15 @@
 import React from "react";
 import Expenses from "./components/expenses/Expenses";
+import NewExpense from "./components/newexpense/NewExpense";
 import { expenses } from "./data/ExpensesData";
 
 const App = () => {
+  const addExpenseDataHandler = (expenseData) => {
+    console.log(expenseData);
+  }
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseDataHandler}/>
       <Expenses items={expenses}/>
     </div>
   );
