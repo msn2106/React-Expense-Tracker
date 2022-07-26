@@ -5,11 +5,14 @@ import { dummyExpenses } from "./data/ExpensesData";
 
 const App = () => {
   const [expenses, setExpenses] = useState(dummyExpenses);
-  const addExpenseDataHandler = (singlExpenseData) => {
-    setExpenses(prevExpenses=>{
-      return [...prevExpenses, singlExpenseData];
+
+  const addExpenseDataHandler = (singleExpenseData) => {
+    console.log(singleExpenseData);
+    setExpenses((prevExpenses)=>{
+      return [singleExpenseData, ...prevExpenses];
     });
   }
+  
   return (
     <div>
       <NewExpense onAddExpense={addExpenseDataHandler}/>
