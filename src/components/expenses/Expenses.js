@@ -2,7 +2,7 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../core/Card";
 import '../../styles/Expenses.css';
 import ExpensesFilter from "./ExpenseFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Expenses = (props) => {
   const [expenseItems, setExpenseItems] = useState(props.items);
@@ -10,6 +10,10 @@ const Expenses = (props) => {
   const onYearChangeHandler = (changedYear) => {
     setSelectedYear(changedYear);
   }
+  
+  useEffect(()=>{
+    setExpenseItems(props.items);
+  },[props.items])
 
   const tempItems = expenseItems.filter((e) => e.date.getFullYear().toString() === selectedYear);
 
