@@ -3,6 +3,7 @@ import '../../styles/Expenses.css';
 import ExpensesFilter from "./ExpenseFilter";
 import { useEffect, useState } from "react";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [expenseItems, setExpenseItems] = useState(props.items);
@@ -15,7 +16,7 @@ const Expenses = (props) => {
     setExpenseItems(props.items);
   },[props.items])
 
-  const tempItems = expenseItems.filter((e) => e.date.getFullYear().toString() === selectedYear);
+  const filteredExpenses = expenseItems.filter((expense) => expense.date.getFullYear().toString() === selectedYear);
 
   return (
     <div>
@@ -23,9 +24,10 @@ const Expenses = (props) => {
         <ExpensesFilter selected={selectedYear} onYearChange={onYearChangeHandler}/>
         {
           // this called abusing
-          // tempItems.length < 1 && <p>No Records found!!!</p>
+          // filteredExpenses.length < 1 && <p>No Records found!!!</p>
         }
-        <ExpensesList items={tempItems}/>
+        <ExpensesChart expenses={filteredExpenses}/>
+        <ExpensesList items={filteredExpenses}/>
       </Card>
     </div>
   )

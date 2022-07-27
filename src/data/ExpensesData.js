@@ -18,6 +18,18 @@ const dummyExpenses = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
+  {
+    id: 'e5',
+    title: 'New Book (Sci-Fi)',
+    amount: 450,
+    date: new Date(2021, 4, 24),
+  },
+  {
+    id: 'e6',
+    title: 'New DVD Player (Sony)',
+    amount: 450,
+    date: new Date(2021, 11, 56),
+  },
 ];
 
 export {dummyExpenses}
