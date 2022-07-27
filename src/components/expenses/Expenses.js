@@ -1,8 +1,8 @@
-import ExpenseItem from "./ExpenseItem";
 import Card from "../core/Card";
 import '../../styles/Expenses.css';
 import ExpensesFilter from "./ExpenseFilter";
 import { useEffect, useState } from "react";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
   const [expenseItems, setExpenseItems] = useState(props.items);
@@ -22,10 +22,10 @@ const Expenses = (props) => {
       <Card className="expenses">
         <ExpensesFilter selected={selectedYear} onYearChange={onYearChangeHandler}/>
         {
-          tempItems.map((item, key)=>
-            <ExpenseItem title={item.title} amount={item.amount} date={item.date} key={item.id}/>
-          )
+          // this called abusing
+          // tempItems.length < 1 && <p>No Records found!!!</p>
         }
+        <ExpensesList items={tempItems}/>
       </Card>
     </div>
   )
